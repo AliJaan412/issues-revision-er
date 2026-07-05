@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-require('dotenv').config();
 
 module.exports = async (ctx, next) => {
   // Excluding health, login, signup and discovery endpoints
@@ -30,7 +29,7 @@ module.exports = async (ctx, next) => {
     ctx.state.user = decoded;
   } catch (err) {
     ctx.status = 403;
-    ctx.body = { error: err.message, message: 'Invalid or expired token' };
+    ctx.body = { error: 'Invalid or expired token' };
     return;
   }
   
